@@ -16,3 +16,15 @@ solution:
 2. ==
   SELECT * FROM employees WHERE hire_date == (SELECT MAX(hire_date) FROM employees)
 
+2.  查找入职员工时间排名倒数第三的员工所有信息
+ 同上
+solution:
+
+1.select* from test LIMIT 1,3;
+当limit后面跟两个参数的时候，**第一个数表示要跳过的数量，后一位表示要取的数量**。???那应该是limit 2,1吧???
+
+2.select * from test LIMIT 3 OFFSET 1;(在mysql 5以后支持这种写法)
+当 limit和offset组合使用的时候，**limit表示要取的的数量,offset表示要跳过的数量**。
+
+
+
