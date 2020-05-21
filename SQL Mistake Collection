@@ -76,17 +76,31 @@
   
   
   
-  4. rank score
+  4. lc. rank score
   
  
- 
-  with nohole as
-(select distinct(*) ss, row_number()over(order by (select null)) rank 
- from Scores
- group by score
- order by ss desc) s1
-select score, rank
-from s1, Scores
-where s1.score=Scores.score
+    with nohole as
+  (select distinct(*) ss, row_number()over(order by (select null)) rank 
+   from Scores
+   group by score
+   order by ss desc) s1
+  select score, rank
+  from s1, Scores
+  where s1.score=Scores.score
 
 
+5. lc579. Find Cumulative Salary of an Employee
+
+  # unkonwn error in my code
+  select id, month ,
+          (ifnull(e1.salary,0) + ifnull(e2.salary,0) + ifnull(E3.salary,0))  as salary
+  where (select id, max(month) as month
+          from employee
+          group by id
+          HAVING COUNT(*) > 1 ) max_mon  
+      left join employee e1 
+      on (e1.id= max_mon.id and e1.month= max_mon.month)
+      left join employee e2
+      on (e1.month = e2.month +1 and e1.id=e2.id)
+      left join employee e3
+      on (e1.month = e3.month +2 and e1.id=e2.id)
