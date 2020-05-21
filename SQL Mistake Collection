@@ -104,3 +104,14 @@
       on (e1.month = e2.month +1 and e1.id=e2.id)
       left join employee e3
       on (e1.month = e3.month +2 and e1.id=e2.id)
+ 
+6. lc262. Trips and Users
+  select newt.request_at as day,
+    sum(case when status = 'completed' then 0 else 1 end)        as 'Cancellation Rate' 
+    
+  from ( select *
+      from trips t
+        where client_id not in (select users_id from users where Banned   ='Yes') 
+        or Driver_Id not in (select users_id from users where Banned ='Yes') 
+          ) newt
+  group by newt.request_at
