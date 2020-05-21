@@ -115,3 +115,29 @@
         or Driver_Id not in (select users_id from users where Banned ='Yes') 
           ) newt
   group by newt.request_at
+
+
+7. lc578. Get Highest Answer Rate Question
+
+  select question_id as 'survey_log'
+  from survey_log
+  group by question_id
+  order by sum(case when action = "answer" then 1 else 0 end)/SUM(case when action="show" THEN 1 ELSE 0 END)  desc limit 1
+  #可以把算式直接写进order by 里 非常灵活
+  
+8. lc580. Count Student Number in Departments
+
+
+  select dept_name, sum(case when student_id is not null then 1 else 0 end) as student_number
+  from student s
+      right join department d
+      on s.dept_id = d.dept_id
+  group by d.dept_id
+  order by student_number desc, dept_name
+  #迷思: 为什么我的code如果直接写count(student_id)不会返回null的,但是答案的却可以...
+
+
+
+  
+      right join department d返回
+      right join department d
