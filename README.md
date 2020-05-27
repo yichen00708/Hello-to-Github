@@ -23,3 +23,8 @@ Paper Test Bank
 General: https://blog.csdn.net/weixin_44915703/article/details/97245622
          https://www.nowcoder.com/discuss/100521?type=2
 
+
+Position:
+平安壹钱包: http://campus.pingan.com/payqbxz/positionDetail?positionId=5912087f1d1436daaa7aef229d7c2347
+http://campus.pingan.com/payqbxz/positionDetail?positionId=045aeafb2d693fb1b2cb6b7d5e1cc7e0
+
