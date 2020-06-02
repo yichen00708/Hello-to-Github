@@ -141,3 +141,18 @@
   
       right join department d返回
       right join department d
+      
+9. LC618. Students Report By Geography
+     
+ select America, Europe, Asia
+from (select
+     (case when continent = America then @ra = @ra + 1
+            when continent = Europe then @rE = @rE + 1
+             when continent = Asia then @ras = @ras + 1) as rank_Cont
+      (case when continent = America then Name else Null) America
+      (case when continent = Europe then Name else Null) Europe
+      (case when continent = Asia then Name else Null) Asia
+      from student, (select @ra:=0, @rE:=0, @ras:=0) as r
+     ) ab
+     
+     group by rank_Count
