@@ -162,7 +162,30 @@ from (select
 10. LC607. Sales Person
 又又又不知道错哪, 郁闷
      
-     select s.name
+select s.name
 from salesperson s left join orders o on o.sales_id = s.sales_id
 where com_id not in (select com_id from company where name ='RED')
+
      因为XX not in xx 只有返回XX有数值的行,不会返回null的
+     
+     
+     这思路有问题, 先将order表和salesperson表并列的话, 再筛选掉red 的话. 其实想岛屿筛选掉的是 red的交易记录. 也就是只要不是和red公司的交易都会保留
+     所以 与red 和 其他公司都有交易的人的名字也会出现在result里
+
+     (case when continent = America then @ra = @ra + 1
+     
+11. 
+
+
+select r2.accepter_id as id, max(rnum+anum) as num
+from 
+    (select requester_id, count(accepter_id) as rnum
+ from request_accepted group by requester_id ) r1,
+ (select accepter_id, count(requester_id) as anum
+ from request_accepted group by accepter_id ) r2
+ where r1.requester_id = r2.accepter_id
+ 
+又又又不知道错在哪
+
+不可以直接选max, max是对的,但是第一个“r2.accepter_id”会返回第一行的值而不是最大值那行对应的值
+..这方法不行, 连表方式导致 只有 在requester和accepter都出现过的值才能出现
