@@ -159,7 +159,10 @@ from (select
      
      没看出来错在哪
 
-10. LC
+10. LC607. Sales Person
+又又又不知道错哪, 郁闷
      
-     
-     
+     select s.name
+from salesperson s left join orders o on o.sales_id = s.sales_id
+where com_id not in (select com_id from company where name ='RED')
+     因为XX not in xx 只有返回XX有数值的行,不会返回null的
