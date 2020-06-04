@@ -158,3 +158,8 @@ from (select
      group by rank_Count
      
      没看出来错在哪
+
+10. LC
+     
+     
+     
