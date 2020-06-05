@@ -189,3 +189,9 @@ from
 
 不可以直接选max, max是对的,但是第一个“r2.accepter_id”会返回第一行的值而不是最大值那行对应的值
 ..这方法不行, 连表方式导致 只有 在requester和accepter都出现过的值才能出现
+
+
+12.  where vs having
+WHERE语句在GROUPBY语句之前；SQL会在分组之前计算WHERE语句。 
+HAVING语句在GROUPBY语句之后；SQL会在分组之后计算HAVING语句。
+
