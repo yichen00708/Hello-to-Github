@@ -191,7 +191,15 @@ from
 ..这方法不行, 连表方式导致 只有 在requester和accepter都出现过的值才能出现
 
 
-12.  where vs having
-WHERE语句在GROUPBY语句之前；SQL会在分组之前计算WHERE语句。 
-HAVING语句在GROUPBY语句之后；SQL会在分组之后计算HAVING语句。
+
+12. group by vs max
+
+586. Customer Placing the Largest Number of Orders
+
+https://blog.csdn.net/Jessica__sun/article/details/79771263
+
+
+"因为每个未在GROUP BY中命名的非聚合列中的所有值对于每个组都是相同的。
+mysql可以自由选择每组中的任何值，因此除非它们相同，否则所选值不确定。 
+你的方法一，依旧存在这个问题，数据量一旦大的话，出来的查询结果就不一样"
 
