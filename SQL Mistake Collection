@@ -222,3 +222,30 @@ and e.departmentid =d.id
 用right join 如果主集是个空表的话, 会返回很多null, 
 
 用and 会返回[], 因为相当于 没有符合where上条件的数据.
+
+
+14. 
+
+select d.name, e.name, salary
+from (
+    select e2.*, dense_rank() over (partition by e2.departmentid order by e2.salary desc) as rr from employee e2
+)  e 
+join department d
+on e.departmentid = d.id
+and e.rr =1
+
+
+
+
+
+select d.Name as Department, a. Name as Employee, a. Salary 
+from (
+select e.*, dense_rank() over (partition by DepartmentId order by Salary desc) as DeptPayRank 
+from Employee e 
+) a 
+join Department d
+on a. DepartmentId = d. Id 
+where DeptPayRank <=3; ```
+
+别纠结了 都运行不了
+
