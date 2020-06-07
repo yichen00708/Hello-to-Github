@@ -203,3 +203,20 @@ https://blog.csdn.net/Jessica__sun/article/details/79771263
 mysql可以自由选择每组中的任何值，因此除非它们相同，否则所选值不确定。 
 你的方法一，依旧存在这个问题，数据量一旦大的话，出来的查询结果就不一样"
 
+13. lc184. Department Highest Salary
+
+select d.name as department, e.name as employee, salary
+from employee e join department d on e.departmentid = d.id
+right join (select max(salary) as mm, departmentid from employee group by departmentid) as ab
+on ab.departmentid = e.departmentid and ab.mm = e.salary
+
+select d.name as department, e.name as employee, e.salary
+from employee e,
+    (select departmentid, max(salary) as max from employee group by departmentid) t, department d
+where e.departmentid = t.departmentid
+and e.salary = t.max
+and e.departmentid =d.id
+
+
+用 join 和用and的区别:
+join 如果最后是空集会返回很多null, and 会返回[].
